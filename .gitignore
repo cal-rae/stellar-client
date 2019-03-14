@@ -1,3 +1,7 @@
+# Local files
+auth_config.py
+out.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
