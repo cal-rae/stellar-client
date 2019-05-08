@@ -62,7 +62,7 @@ class StellarData:
         if files.empty:
             return files
         files['time'] = pd.to_datetime(files.time, infer_datetime_format=True)
-        files.set_index(pd.DatetimeIndex(files['time']), inplace=True)
+        files.set_index('time', inplace=True)
         logger.info('Data received')
         return files
 
@@ -135,7 +135,7 @@ class StellarData:
 
         df = to_utc(df)
         filename = file.format(self.system['site'])
-        with open(filename, 'w') as f:
+        with open(filename, 'w', newline='') as f:
             df.to_csv(f, header=True)
             f.close()
         logger.debug('saved stellar api data to: {}'.format(filename))
