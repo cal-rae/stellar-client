@@ -59,6 +59,8 @@ class StellarData:
     def to_pandas_dataframe(d_dict):
         """Convert the dictionary into a dataframe"""
         files = pd.DataFrame.from_dict(d_dict, orient='columns')
+        if files.empty:
+            return files
         files['time'] = pd.to_datetime(files.time, infer_datetime_format=True)
         files.set_index(pd.DatetimeIndex(files['time']), inplace=True)
         logger.info('Data received')
@@ -126,6 +128,8 @@ class StellarData:
 
         def to_utc(data):
             """Make sure it's UTC"""
+            if data.empty:
+                return data
             data.index = data.index.tz_localize(pytz.utc)
             return data
 
