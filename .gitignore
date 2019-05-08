@@ -1,6 +1,6 @@
 # Local files
 auth_config.py
-out.csv
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
